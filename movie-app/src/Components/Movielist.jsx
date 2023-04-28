@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Search } from './Search';
+import PopularMovieList from './Popular';
+import { Navbar } from './Navbar';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -19,19 +21,19 @@ const MovieList = () => {
     getMovies(searchValue);
   }, [searchValue]);
 
+
+  
   return (
     <div className='container-fluid'>
-      <div className='row d-flex align-items-center justify-content-center '>
-        
-        <Search searchValue={searchValue} setSearchValue={setSearchValue}></Search>
+      <div>
+        <Navbar searchValue={searchValue} setSearchValue={setSearchValue}/>
       </div>
 
-      <div className='row'>
+      <div className='row '>
         {movies.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}
-      </div>
-      
+      </div> 
     </div>
   );
 };
